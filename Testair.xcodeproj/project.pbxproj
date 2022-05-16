@@ -31,6 +31,10 @@
 		767390FB28313D50006387A7 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390FA28313D50006387A7 /* HttpMethod.swift */; };
 		767390FD28313D5F006387A7 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390FC28313D5F006387A7 /* Endpoint.swift */; };
 		7673910228313E20006387A7 /* WeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7673910128313E20006387A7 /* WeatherEndpoint.swift */; };
+		76739108283244E0006387A7 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76739107283244E0006387A7 /* ResultsView.swift */; };
+		7673910A28324500006387A7 /* CityWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7673910928324500006387A7 /* CityWeatherView.swift */; };
+		76D98B4B283252710057D390 /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D98B4A283252710057D390 /* Unwrap.swift */; };
+		76D98B4E28328A830057D390 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 76D98B4D28328A830057D390 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,9 @@
 		767390FA28313D50006387A7 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		767390FC28313D5F006387A7 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		7673910128313E20006387A7 /* WeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEndpoint.swift; sourceTree = "<group>"; };
+		76739107283244E0006387A7 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		7673910928324500006387A7 /* CityWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherView.swift; sourceTree = "<group>"; };
+		76D98B4A283252710057D390 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D98B4E28328A830057D390 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,13 +137,13 @@
 		767390A52830F59C006387A7 /* Testair */ = {
 			isa = PBXGroup;
 			children = (
+				767390D52830FAEC006387A7 /* Model */,
+				767390D62830FAF4006387A7 /* View */,
+				767390D72830FAFE006387A7 /* ViewModel */,
 				767390EE283139CF006387A7 /* Networking */,
 				767390E528313927006387A7 /* Protocols */,
 				767390E228313883006387A7 /* Extensions */,
 				767390DD28310E19006387A7 /* Utils */,
-				767390D52830FAEC006387A7 /* Model */,
-				767390D62830FAF4006387A7 /* View */,
-				767390D72830FAFE006387A7 /* ViewModel */,
 				767390A62830F59C006387A7 /* TestairApp.swift */,
 				767390AA2830F5A4006387A7 /* Assets.xcassets */,
 				767390AF2830F5A4006387A7 /* Persistence.swift */,
@@ -184,6 +192,8 @@
 			children = (
 				767390D82830FBD6006387A7 /* HomeView.swift */,
 				767390DA2831004A006387A7 /* BackgroundView.swift */,
+				76739107283244E0006387A7 /* ResultsView.swift */,
+				7673910928324500006387A7 /* CityWeatherView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				767390DE28310E29006387A7 /* Constants.swift */,
+				76D98B4A283252710057D390 /* Unwrap.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -284,6 +295,9 @@
 			dependencies = (
 			);
 			name = Testair;
+			packageProductDependencies = (
+				76D98B4D28328A830057D390 /* Kingfisher */,
+			);
 			productName = Testair;
 			productReference = 767390A32830F59C006387A7 /* Testair.app */;
 			productType = "com.apple.product-type.application";
@@ -356,6 +370,9 @@
 				Base,
 			);
 			mainGroup = 7673909A2830F59C006387A7;
+			packageReferences = (
+				76D98B4C28328A830057D390 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 767390A42830F59C006387A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -398,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7673910A28324500006387A7 /* CityWeatherView.swift in Sources */,
 				767390DB2831004A006387A7 /* BackgroundView.swift in Sources */,
 				767390B32830F5A4006387A7 /* Testair.xcdatamodeld in Sources */,
 				767390B02830F5A4006387A7 /* Persistence.swift in Sources */,
@@ -411,7 +429,9 @@
 				767390FD28313D5F006387A7 /* Endpoint.swift in Sources */,
 				767390D92830FBD6006387A7 /* HomeView.swift in Sources */,
 				767390F428313A7E006387A7 /* HomeViewModel.swift in Sources */,
+				76739108283244E0006387A7 /* ResultsView.swift in Sources */,
 				7673910228313E20006387A7 /* WeatherEndpoint.swift in Sources */,
+				76D98B4B283252710057D390 /* Unwrap.swift in Sources */,
 				767390ED283139A5006387A7 /* NetworkInitiable.swift in Sources */,
 				767390F728313B70006387A7 /* MockService.swift in Sources */,
 				767390A72830F59C006387A7 /* TestairApp.swift in Sources */,
@@ -741,6 +761,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76D98B4C28328A830057D390 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76D98B4D28328A830057D390 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76D98B4C28328A830057D390 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		767390B12830F5A4006387A7 /* Testair.xcdatamodeld */ = {

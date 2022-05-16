@@ -14,6 +14,7 @@ struct HomeView: View, ViewInitiable {
     @ObservedObject var viewModel: ViewModel
 
     @State var text = ""
+    @State var showSecondView = false
 
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -27,25 +28,31 @@ struct HomeView: View, ViewInitiable {
 
     private var content: some View {
         BackgroundView {
-            LinearGradient(gradient: Gradient(colors: [.mint, .yellow]), startPoint: .top, endPoint: .bottom)
+            Constants.gradient
         } content: {
             VStack(spacing: Constants.Layout.spacing) {
                 Image(Images.logo)
                     .scaledToFit()
                 inputField
                 historyButton
+                Unwrap(viewModel.weatherPublisher) { weather in
+                    NavigationLink(destination: ResultsView(cities: [weather]), isActive: $showSecondView) { }
+                }
             }
-            .padding(.horizontal)
+            .padding()
+            .offset(x: 0, y: -64)
         }
     }
 
     private var inputField: some View {
-        HStack() {
+        HStack {
             TextField(Constants.Strings.enterCityName.uppercased(), text: $text)
+                .foregroundColor(.green)
+                .font(Font.system(size: Constants.Layout.fontSize))
             Color.green.frame(width: Constants.Layout.inputSeparatorWidth,
                               height: Constants.Layout.inputSeparatorHeight)
             Button(action: {
-                print("arrow tapped")
+                showSecondView.toggle()
                 viewModel.retriveWeatherData(cityName: text)
             }) {
                 Image(Images.arrow)

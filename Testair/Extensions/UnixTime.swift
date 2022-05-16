@@ -28,6 +28,6 @@ extension UnixTime {
     }
 
     var monthDay: String {
-        return month.uppercased() + "\n" + day
+        return month.uppercased() + "\n  " + day
     }
 }
