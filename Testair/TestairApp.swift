@@ -13,7 +13,8 @@ struct TestairApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            let viewModel = HomeViewModel()
+            HomeView(viewModel: viewModel)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

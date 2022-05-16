@@ -7,12 +7,22 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView: View, ViewInitiable {
+
+    typealias ViewModel = HomeViewModel
+
+    @ObservedObject var viewModel: ViewModel
 
     @State var text = ""
 
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
+
     var body: some View {
-        content
+        NavigationView {
+            content
+        }
     }
 
     private var content: some View {
@@ -36,6 +46,7 @@ struct HomeView: View {
                               height: Constants.Layout.inputSeparatorHeight)
             Button(action: {
                 print("arrow tapped")
+                viewModel.retriveWeatherData(cityName: text)
             }) {
                 Image(Images.arrow)
                     .renderingMode(.template)
@@ -65,6 +76,6 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(viewModel: .init(webservice: MockService(result: .success(EmptyResponse()))))
     }
 }

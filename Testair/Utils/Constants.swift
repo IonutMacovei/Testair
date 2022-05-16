@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 struct Constants {
-
     struct Strings {
         static let enterCityName = "Enter city name"
         static let viewHistory = "View history"

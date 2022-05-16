@@ -18,6 +18,19 @@
 		767390D92830FBD6006387A7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390D82830FBD6006387A7 /* HomeView.swift */; };
 		767390DB2831004A006387A7 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390DA2831004A006387A7 /* BackgroundView.swift */; };
 		767390DF28310E29006387A7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390DE28310E29006387A7 /* Constants.swift */; };
+		767390E12831381B006387A7 /* WeatherDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390E02831381B006387A7 /* WeatherDetails.swift */; };
+		767390E428313895006387A7 /* UnixTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390E328313895006387A7 /* UnixTime.swift */; };
+		767390E828313952006387A7 /* ViewInitiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390E728313952006387A7 /* ViewInitiable.swift */; };
+		767390EA28313978006387A7 /* ViewModelInitiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390E928313978006387A7 /* ViewModelInitiable.swift */; };
+		767390ED283139A5006387A7 /* NetworkInitiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390EC283139A5006387A7 /* NetworkInitiable.swift */; };
+		767390F0283139DE006387A7 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390EF283139DE006387A7 /* ApiError.swift */; };
+		767390F228313A25006387A7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390F128313A25006387A7 /* NetworkService.swift */; };
+		767390F428313A7E006387A7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390F328313A7E006387A7 /* HomeViewModel.swift */; };
+		767390F728313B70006387A7 /* MockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390F628313B70006387A7 /* MockService.swift */; };
+		767390F928313CDE006387A7 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390F828313CDE006387A7 /* ApiHelper.swift */; };
+		767390FB28313D50006387A7 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390FA28313D50006387A7 /* HttpMethod.swift */; };
+		767390FD28313D5F006387A7 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767390FC28313D5F006387A7 /* Endpoint.swift */; };
+		7673910228313E20006387A7 /* WeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7673910128313E20006387A7 /* WeatherEndpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +66,19 @@
 		767390DA2831004A006387A7 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		767390DC2831065B006387A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		767390DE28310E29006387A7 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		767390E02831381B006387A7 /* WeatherDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetails.swift; sourceTree = "<group>"; };
+		767390E328313895006387A7 /* UnixTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnixTime.swift; sourceTree = "<group>"; };
+		767390E728313952006387A7 /* ViewInitiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInitiable.swift; sourceTree = "<group>"; };
+		767390E928313978006387A7 /* ViewModelInitiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelInitiable.swift; sourceTree = "<group>"; };
+		767390EC283139A5006387A7 /* NetworkInitiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkInitiable.swift; sourceTree = "<group>"; };
+		767390EF283139DE006387A7 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		767390F128313A25006387A7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		767390F328313A7E006387A7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		767390F628313B70006387A7 /* MockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockService.swift; sourceTree = "<group>"; };
+		767390F828313CDE006387A7 /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
+		767390FA28313D50006387A7 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		767390FC28313D5F006387A7 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		7673910128313E20006387A7 /* WeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEndpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +129,10 @@
 		767390A52830F59C006387A7 /* Testair */ = {
 			isa = PBXGroup;
 			children = (
+				767390EE283139CF006387A7 /* Networking */,
+				767390E528313927006387A7 /* Protocols */,
+				767390E228313883006387A7 /* Extensions */,
 				767390DD28310E19006387A7 /* Utils */,
-				767390DC2831065B006387A7 /* Info.plist */,
 				767390D52830FAEC006387A7 /* Model */,
 				767390D62830FAF4006387A7 /* View */,
 				767390D72830FAFE006387A7 /* ViewModel */,
@@ -112,6 +140,7 @@
 				767390AA2830F5A4006387A7 /* Assets.xcassets */,
 				767390AF2830F5A4006387A7 /* Persistence.swift */,
 				767390B12830F5A4006387A7 /* Testair.xcdatamodeld */,
+				767390DC2831065B006387A7 /* Info.plist */,
 				767390AC2830F5A4006387A7 /* Preview Content */,
 			);
 			path = Testair;
@@ -145,6 +174,7 @@
 		767390D52830FAEC006387A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				767390E02831381B006387A7 /* WeatherDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,6 +191,7 @@
 		767390D72830FAFE006387A7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				767390F328313A7E006387A7 /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -171,6 +202,70 @@
 				767390DE28310E29006387A7 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		767390E228313883006387A7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				767390E328313895006387A7 /* UnixTime.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		767390E528313927006387A7 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				767390EB28313990006387A7 /* Network */,
+				767390E62831392D006387A7 /* Architecture */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		767390E62831392D006387A7 /* Architecture */ = {
+			isa = PBXGroup;
+			children = (
+				767390E728313952006387A7 /* ViewInitiable.swift */,
+				767390E928313978006387A7 /* ViewModelInitiable.swift */,
+			);
+			path = Architecture;
+			sourceTree = "<group>";
+		};
+		767390EB28313990006387A7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				767390EC283139A5006387A7 /* NetworkInitiable.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		767390EE283139CF006387A7 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				7673910028313E0F006387A7 /* Endpoints */,
+				767390F528313B4E006387A7 /* Services */,
+				767390EF283139DE006387A7 /* ApiError.swift */,
+				767390F828313CDE006387A7 /* ApiHelper.swift */,
+				767390FA28313D50006387A7 /* HttpMethod.swift */,
+				767390FC28313D5F006387A7 /* Endpoint.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		767390F528313B4E006387A7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				767390F128313A25006387A7 /* NetworkService.swift */,
+				767390F628313B70006387A7 /* MockService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		7673910028313E0F006387A7 /* Endpoints */ = {
+			isa = PBXGroup;
+			children = (
+				7673910128313E20006387A7 /* WeatherEndpoint.swift */,
+			);
+			path = Endpoints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,8 +401,21 @@
 				767390DB2831004A006387A7 /* BackgroundView.swift in Sources */,
 				767390B32830F5A4006387A7 /* Testair.xcdatamodeld in Sources */,
 				767390B02830F5A4006387A7 /* Persistence.swift in Sources */,
+				767390E12831381B006387A7 /* WeatherDetails.swift in Sources */,
+				767390F928313CDE006387A7 /* ApiHelper.swift in Sources */,
+				767390E828313952006387A7 /* ViewInitiable.swift in Sources */,
+				767390F0283139DE006387A7 /* ApiError.swift in Sources */,
+				767390E428313895006387A7 /* UnixTime.swift in Sources */,
+				767390FB28313D50006387A7 /* HttpMethod.swift in Sources */,
+				767390EA28313978006387A7 /* ViewModelInitiable.swift in Sources */,
+				767390FD28313D5F006387A7 /* Endpoint.swift in Sources */,
 				767390D92830FBD6006387A7 /* HomeView.swift in Sources */,
+				767390F428313A7E006387A7 /* HomeViewModel.swift in Sources */,
+				7673910228313E20006387A7 /* WeatherEndpoint.swift in Sources */,
+				767390ED283139A5006387A7 /* NetworkInitiable.swift in Sources */,
+				767390F728313B70006387A7 /* MockService.swift in Sources */,
 				767390A72830F59C006387A7 /* TestairApp.swift in Sources */,
+				767390F228313A25006387A7 /* NetworkService.swift in Sources */,
 				767390DF28310E29006387A7 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
