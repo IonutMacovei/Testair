@@ -20,7 +20,6 @@ protocol Endpoint {
 extension Endpoint {
     func request<T: Codable>(with service: NetworkInitiable) -> AnyPublisher<T, ApiError> {
         let urlPath = ApiHelper.apiUrl + route
-        print(urlPath)
         guard let url = URL(string: urlPath) else {
             return Future { promise in
                 promise(.failure(ApiError.invalidUrl))

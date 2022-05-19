@@ -12,14 +12,12 @@ import CoreData
 final class HomeViewModel: ObservableObject, ViewModelInitiable {
     typealias ModelObject = Any?
 
-    var weatherId: NSManagedObjectID?
-
     let webservice: NetworkInitiable
     let viewContext: NSManagedObjectContext
 
     @Published private(set) var error: ApiError?
     @Published private(set) var isLoading: Bool = false
-    @Published private(set) var weatherPublisher: WeatherDomain?
+    @Published private(set) var weatherPublisher: WeatherWrapper?
 
     var cancelables = Set<AnyCancellable>()
 
@@ -47,32 +45,9 @@ final class HomeViewModel: ObservableObject, ViewModelInitiable {
             }.store(in: &cancelables)
     }
 
-    private func onReceiveValue(with weather: WeatherDetails) {
-        let weatherDomain = WeatherDomain(name: weather.name ?? "",
-                                          icon: weather.iconUrl,
-                                          date: weather.date,
-                                          temperature: weather.tempString,
-                                          details: weather.details ?? "")
-
-        saveWeather(weatherId: weatherId, with: weatherDomain, in: viewContext)
-        weatherPublisher = weatherDomain
-    }
-
-    func saveWeather(weatherId: NSManagedObjectID?, with weatherDetails: WeatherDomain, in context: NSManagedObjectContext) {
-        let weather: CityWeather
-        if let objectId = weatherId,
-            let fetchedWeather = fetchWeather(for: objectId, context: context) {
-            weather = fetchedWeather
-        } else {
-            weather = CityWeather(context: context)
-        }
-
-        weather.name = weatherDetails.name
-        weather.icon = weatherDetails.icon
-        weather.date = weatherDetails.date
-        weather.temperature = weatherDetails.temperature
-        weather.details = weatherDetails.details
-        weather.timeAdded = Date()
+    func saveWeather(with weatherDetails: WeatherWrapper, in context: NSManagedObjectContext) {
+        var weather: CityWeather?
+        checkBeforeSave(weatherDetails, context, &weather)
         do {
             try context.save()
         } catch {
@@ -80,33 +55,68 @@ final class HomeViewModel: ObservableObject, ViewModelInitiable {
         }
     }
 
-    func fetchWeatherHistory(in context: NSManagedObjectContext) -> [WeatherDomain] {
+    func fetchWeatherHistory(in context: NSManagedObjectContext) -> [WeatherWrapper] {
         let fetchRequest: NSFetchRequest<CityWeather>
         fetchRequest = CityWeather.fetchRequest()
         fetchRequest.fetchLimit = 5
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timeAdded", ascending: false)]
-        var weatherDomains: [WeatherDomain] = []
+        var weatherWrappers: [WeatherWrapper] = []
         do {
             let objects = try context.fetch(fetchRequest)
             objects.forEach { cityWeather in
-                weatherDomains.append(WeatherDomain(name: cityWeather.name ?? "",
-                                                    icon: cityWeather.icon ?? "",
-                                                    date: cityWeather.date ?? "",
-                                                    temperature: cityWeather.temperature ?? "",
-                                                    details: cityWeather.details ?? ""))
+                weatherWrappers.append(WeatherWrapper(id: Int(cityWeather.id),
+                                                      name: cityWeather.name ?? "",
+                                                      icon: cityWeather.icon ?? "",
+                                                      date: cityWeather.date ?? "",
+                                                      temperature: cityWeather.temperature ?? "",
+                                                      details: cityWeather.details ?? ""))
             }
         } catch {
             print("Error")
         }
-        return weatherDomains
+        return weatherWrappers
     }
 
-    private func fetchWeather(for objectId: NSManagedObjectID, context: NSManagedObjectContext) -> CityWeather? {
-        guard let weather = context.object(with: objectId) as? CityWeather else {
-            return nil
-        }
+    private func onReceiveValue(with weather: WeatherDetails) {
+        let weatherWrapper = WeatherWrapper(id: weather.id,
+                                             name: weather.name ?? "",
+                                             icon: weather.iconUrl,
+                                             date: weather.date,
+                                             temperature: weather.tempString,
+                                             details: weather.details ?? "")
 
-        return weather
+        saveWeather(with: weatherWrapper, in: viewContext)
+        weatherPublisher = weatherWrapper
+    }
+
+    private func updateData(_ weather: CityWeather, _ weatherDetails: WeatherWrapper) {
+        weather.id = Int64(weatherDetails.id)
+        weather.name = weatherDetails.name
+        weather.icon = weatherDetails.icon
+        weather.date = weatherDetails.date
+        weather.temperature = weatherDetails.temperature
+        weather.details = weatherDetails.details
+        weather.timeAdded = Date()
+    }
+
+    private func checkBeforeSave(_ weatherDetails: WeatherWrapper, _ context: NSManagedObjectContext, _ weather: inout CityWeather?) {
+        let fetchRequest: NSFetchRequest<CityWeather>
+        fetchRequest = CityWeather.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %i", weatherDetails.id)
+        do {
+            let results = try context.fetch(fetchRequest)
+            if results.count > 0 {
+                for result in results {
+                    updateData(result, weatherDetails)
+                }
+            } else {
+                weather = CityWeather(context: context)
+                if let weather = weather {
+                    updateData(weather, weatherDetails)
+                }
+            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
 }
-

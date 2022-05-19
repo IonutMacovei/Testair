@@ -18,7 +18,7 @@ struct HomeView: View, ViewInitiable {
     @State var text = ""
     @State var showSecondView = false
     @State var showHistory = false
-    @State var history: [WeatherDomain] = []
+    @State var history: [WeatherWrapper] = []
 
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -69,8 +69,8 @@ struct HomeView: View, ViewInitiable {
     private var inputButton: some View {
         Button(action: {
             if !viewModel.isLoading  {
-                showSecondView = true
                 viewModel.retriveWeatherData(cityName: text)
+                showSecondView = true
             }
         }) {
             Image(Images.arrow)

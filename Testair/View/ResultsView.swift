@@ -10,7 +10,7 @@ import SwiftUI
 struct ResultsView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    var cities: [WeatherDomain]
+    @State var cities: [WeatherWrapper]
 
     var body: some View {
         BackgroundView { } content: {
@@ -20,7 +20,8 @@ struct ResultsView: View {
         .navigationBarItems(leading: btnBack)
     }
 
-    private var btnBack : some View {
+    @ViewBuilder
+    private var btnBack: some View {
         Button(action: {
             self.presentationMode.wrappedValue.dismiss()
         }) {
@@ -36,7 +37,7 @@ struct ResultsView: View {
     @ViewBuilder
     private var list: some View {
         List {
-            ForEach(cities, id: \.self) { city in
+            ForEach(cities) { city in
                 VStack {
                     CityWeatherView(weather: city)
                         .background(Color.white.opacity(Constants.Layout.alpha))

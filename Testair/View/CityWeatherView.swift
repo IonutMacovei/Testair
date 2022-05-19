@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct CityWeatherView: View {
-    var weather: WeatherDomain
+    var weather: WeatherWrapper
 
     var body: some View {
         BackgroundView {
@@ -61,7 +61,7 @@ struct CityWeatherView: View {
 
 struct CityWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        CityWeatherView(weather: WeatherDomain(name: "", icon: "", date: "", temperature: "", details: ""))
+        CityWeatherView(weather: WeatherWrapper(id: 0, name: "", icon: "", date: "", temperature: "", details: ""))
             .previewLayout(.fixed(width: 400, height: 200))
             .colorScheme(.light)
             .previewDisplayName("Dark preview")

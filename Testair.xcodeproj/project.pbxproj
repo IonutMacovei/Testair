@@ -33,6 +33,7 @@
 		7673910228313E20006387A7 /* WeatherEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7673910128313E20006387A7 /* WeatherEndpoint.swift */; };
 		76739108283244E0006387A7 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76739107283244E0006387A7 /* ResultsView.swift */; };
 		7673910A28324500006387A7 /* CityWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7673910928324500006387A7 /* CityWeatherView.swift */; };
+		76B912972836DC050085D981 /* WeatherWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B912962836DC050085D981 /* WeatherWrapper.swift */; };
 		76D98B4B283252710057D390 /* Unwrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D98B4A283252710057D390 /* Unwrap.swift */; };
 		76D98B4E28328A830057D390 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 76D98B4D28328A830057D390 /* Kingfisher */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		7673910128313E20006387A7 /* WeatherEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEndpoint.swift; sourceTree = "<group>"; };
 		76739107283244E0006387A7 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		7673910928324500006387A7 /* CityWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityWeatherView.swift; sourceTree = "<group>"; };
+		76B912962836DC050085D981 /* WeatherWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWrapper.swift; sourceTree = "<group>"; };
 		76D98B4A283252710057D390 /* Unwrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unwrap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				767390E02831381B006387A7 /* WeatherDetails.swift */,
+				76B912962836DC050085D981 /* WeatherWrapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76B912972836DC050085D981 /* WeatherWrapper.swift in Sources */,
 				7673910A28324500006387A7 /* CityWeatherView.swift in Sources */,
 				767390DB2831004A006387A7 /* BackgroundView.swift in Sources */,
 				767390B32830F5A4006387A7 /* Testair.xcdatamodeld in Sources */,
