@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreData
 
 protocol ViewModelInitiable: AnyObject {
 
@@ -15,5 +16,5 @@ protocol ViewModelInitiable: AnyObject {
     var webservice: NetworkInitiable { get }
     var cancelables: Set<AnyCancellable> { get }
 
-    init(webservice: NetworkInitiable, with model: ModelObject)
+    init(webservice: NetworkInitiable, with viewContext: NSManagedObjectContext)
 }

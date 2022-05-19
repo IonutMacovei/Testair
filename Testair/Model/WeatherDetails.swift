@@ -48,3 +48,12 @@ struct Weather: Codable {
     let id: Int
     let description, icon: String
 }
+
+
+struct WeatherDomain: Hashable {
+    let name: String
+    let icon: String
+    let date: String
+    let temperature: String
+    let details: String
+}

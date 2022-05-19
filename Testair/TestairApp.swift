@@ -9,13 +9,13 @@ import SwiftUI
 
 @main
 struct TestairApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceManager = PersistenceManager.shared
 
     var body: some Scene {
         WindowGroup {
-            let viewModel = HomeViewModel()
+            let viewModel = HomeViewModel(with: persistenceManager.container.viewContext)
             HomeView(viewModel: viewModel)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, persistenceManager.container.viewContext)
         }
     }
 }

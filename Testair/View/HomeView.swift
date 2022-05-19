@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeView: View, ViewInitiable {
+    @Environment(\.managedObjectContext) private var viewContext
 
     typealias ViewModel = HomeViewModel
 
@@ -15,6 +17,8 @@ struct HomeView: View, ViewInitiable {
 
     @State var text = ""
     @State var showSecondView = false
+    @State var showHistory = false
+    @State var history: [WeatherDomain] = []
 
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
@@ -35,8 +39,12 @@ struct HomeView: View, ViewInitiable {
                     .scaledToFit()
                 inputField
                 historyButton
+                NavigationLink(destination: ResultsView(cities: history),
+                               isActive: $showHistory) { }
+
                 Unwrap(viewModel.weatherPublisher) { weather in
-                    NavigationLink(destination: ResultsView(cities: [weather]), isActive: $showSecondView) { }
+                    NavigationLink(destination: ResultsView(cities: [weather]),
+                                   isActive: $showSecondView) { }
                 }
             }
             .padding()
@@ -51,24 +59,35 @@ struct HomeView: View, ViewInitiable {
                 .font(Font.system(size: Constants.Layout.fontSize))
             Color.green.frame(width: Constants.Layout.inputSeparatorWidth,
                               height: Constants.Layout.inputSeparatorHeight)
-            Button(action: {
-                showSecondView.toggle()
-                viewModel.retriveWeatherData(cityName: text)
-            }) {
-                Image(Images.arrow)
-                    .renderingMode(.template)
-                    .scaledToFit()
-                    .foregroundColor(.green)
-            }
+            inputButton
         }
         .padding(.horizontal)
         .background(Color.white)
         .cornerRadius(Constants.Layout.cornerRadius)
     }
 
+    private var inputButton: some View {
+        Button(action: {
+            if !viewModel.isLoading  {
+                showSecondView = true
+                viewModel.retriveWeatherData(cityName: text)
+            }
+        }) {
+            Image(Images.arrow)
+                .renderingMode(.template)
+                .scaledToFit()
+                .foregroundColor(.green)
+        }
+    }
+
     private var historyButton: some View {
         Button(action: {
-            print("view history tapped")
+            history = viewModel.fetchWeatherHistory(in: viewContext)
+            if !history.isEmpty, !viewModel.isLoading {
+                showHistory = true
+            } else {
+                // TODO: We need to show an alert to inform the user that he has no weather history
+            }
         }) {
             Text(Constants.Strings.viewHistory.uppercased())
                 .font(.system(size: Constants.Layout.fontSize))
@@ -83,6 +102,7 @@ struct HomeView: View, ViewInitiable {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: .init(webservice: MockService(result: .success(EmptyResponse()))))
+        HomeView(viewModel: .init(webservice: MockService(result: .success(EmptyResponse())),
+                                  with: NSManagedObjectContext(.privateQueue)))
     }
 }

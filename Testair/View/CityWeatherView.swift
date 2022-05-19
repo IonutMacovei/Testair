@@ -9,26 +9,12 @@ import SwiftUI
 import Kingfisher
 
 struct CityWeatherView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    var weatherDetails: WeatherDetails
+    var weather: WeatherDomain
 
     var body: some View {
         BackgroundView {
         } content: {
             content
-        }
-    }
-
-    private var btnBack : some View {
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            HStack {
-                Image(Images.arrow)
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.white)
-                    .rotationEffect(.radians(.pi))
-            }
         }
     }
 
@@ -39,18 +25,16 @@ struct CityWeatherView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(Constants.Layout.stackPadding)
-        .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: btnBack)
     }
 
     private var weatherCondition: some View {
         HStack {
-            KFImage(URL(string: weatherDetails.iconUrl))
+            KFImage(URL(string: weather.icon))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: Constants.Layout.imageSize, height: Constants.Layout.imageSize)
 
-            Unwrap(weatherDetails.details) { details in
+            Unwrap(weather.details) { details in
                 Text(details.capitalized)
                     .foregroundColor(.white)
             }
@@ -60,16 +44,16 @@ struct CityWeatherView: View {
 
     private var weatherData: some View {
         HStack(alignment: .bottom) {
-            Unwrap(weatherDetails.name) { name in
+            Unwrap(weather.name) { name in
                 Text(name)
                     .foregroundColor(.white)
             }
             Spacer()
-            Text(weatherDetails.tempString)
+            Text(weather.temperature)
                 .foregroundColor(.white)
                 .font(.system(size: Constants.Layout.largeFontSize))
             Spacer()
-            Text(weatherDetails.date)
+            Text(weather.date)
                 .foregroundColor(.white)
         }
     }
@@ -77,7 +61,7 @@ struct CityWeatherView: View {
 
 struct CityWeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        CityWeatherView(weatherDetails: WeatherDetails(id: 2, weather: nil, main: nil, dt: nil, name: nil))
+        CityWeatherView(weather: WeatherDomain(name: "", icon: "", date: "", temperature: "", details: ""))
             .previewLayout(.fixed(width: 400, height: 200))
             .colorScheme(.light)
             .previewDisplayName("Dark preview")
