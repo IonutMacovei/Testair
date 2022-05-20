@@ -45,9 +45,9 @@ final class HomeViewModel: ObservableObject, ViewModelInitiable {
             }.store(in: &cancelables)
     }
 
-    func saveWeather(with weatherDetails: WeatherWrapper, in context: NSManagedObjectContext) {
+    func saveWeather(with weatherWrapper: WeatherWrapper, in context: NSManagedObjectContext) {
         var weather: CityWeather?
-        checkBeforeSave(weatherDetails, context, &weather)
+        checkBeforeSave(weatherWrapper, context, &weather)
         do {
             try context.save()
         } catch {
